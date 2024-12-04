@@ -24,7 +24,8 @@ Attach common pin to D2 of Arduino
 Segments: A,B,C,D,E,F,G,Period correlate to pins D6-D13
 
  This example demonstrates a very simple use of the SevSeg library with a 4
- digit display. It displays a counter that counts up, showing deci-seconds.
+ digit display. It displays a counter that counts up, showing seconds.
+
  */
 
 #include "SevSeg.h"
@@ -42,21 +43,21 @@ void setup() {
   
   sevseg.begin(hardwareConfig, numDigits, digitPins, segmentPins, resistorsOnSegments,
   updateWithDelays, leadingZeros, disableDecPoint);
-  sevseg.setBrightness(90);
+  sevseg.setBrightness(100);
 }
 
 void loop() {
   static unsigned long timer = millis();
-  static int deciSeconds = 0;
+  static int Seconds = 0;
   
   if (millis() - timer >= 1000) {
     timer += 1000;
-    deciSeconds++; // 100 milliSeconds is equal to 1 deciSecond
+    Seconds++; // 1000 milliSeconds is equal to 1 Second
     
-    if (deciSeconds == 10) { // Reset to 0 after counting for 10 seconds.
-      deciSeconds=0;
+    if (Seconds == 10) { // Reset to 0 after counting for 10 seconds.
+      Seconds=0;
     }
-    sevseg.setNumber(deciSeconds, 1);
+    sevseg.setNumber(Seconds, 1); // this command works like this: sevseg.setNumber(::first number or VARIABLE is the number you want to show::, ::which segment to target::)
   }
 
   sevseg.refreshDisplay(); // Must run repeatedly
