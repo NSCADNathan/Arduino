@@ -17,6 +17,9 @@ int RXLED = 17;  // The RX LED has a defined Arduino pin
 // macros (TXLED1, TXLED0) to control that.
 // (We could use the same macros for the RX LED too -- RXLED1,
 //  and RXLED0.)
+#include <Servo.h>
+
+Servo myservo;  // create servo object to control a servo
 
 void setup()
 {
@@ -28,6 +31,7 @@ void setup()
 
   Serial1.begin(9600); //This is the UART, pipes to sensors attached to board
   Serial1.println("Initialize Serial Hardware UART Pins");
+   myservo.attach(11);  
 }
 
 void loop()
