@@ -5,11 +5,11 @@
   Released into the public domain.
 
 */
-#include ShiftRegister74HC595.h
+#include <ShiftRegister74HC595.h>
 
 // create a global shift register object
 // parameters number of shift registers (data pin, clock pin, latch pin)
-ShiftRegister74HC5951 sr(2, 3, 8);  custom pins
+ShiftRegister74HC5951 sr(2, 3, 8);  // custom pins
 
 void setup() {
 }
